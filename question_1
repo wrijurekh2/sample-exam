@@ -1,0 +1,25 @@
+def extractText(text, keys):
+    
+    if not text:
+        return ""
+
+    allowed_chars = set(keys.lower())
+
+    result = ""
+    current_word = ""
+
+    for char in text:
+        char_lower = char.lower()
+
+        if char_lower.isalpha():
+            if char_lower in allowed_chars:
+                current_word += char
+        else:
+            if current_word:
+                result += current_word + " "
+                current_word = ""
+
+    if current_word:
+        result += current_word
+
+    return result.strip()
